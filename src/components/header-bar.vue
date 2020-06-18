@@ -1,13 +1,14 @@
 <template>
   <header>
     <nav
-      class="navbar"
+      class="navbar is-light"
       role="navigation"
       aria-label="main navigation"
     >
-      <HeaderBarBrand :menu="showMenu" @burgerClick="displayMenu"></HeaderBarBrand>
+      <HeaderBarBrand :menu="showMenu" @burgerClick="showMenu = !showMenu"></HeaderBarBrand>
       <div id="navbarCards" class="navbar-menu" :class="{ 'is-active': showMenu }">
         <HeaderBarMenu></HeaderBarMenu>
+        <HeaderBarLinks></HeaderBarLinks>
       </div>
     </nav>
   </header>
@@ -16,6 +17,7 @@
 <script>
 import HeaderBarBrand from '@/components/header-bar-brand';
 import HeaderBarMenu from '@/components/header-bar-menu';
+import HeaderBarLinks from '@/components/header-bar-links';
 
 export default {
   name: 'HeaderBar',
@@ -24,11 +26,6 @@ export default {
       showMenu: false
     };
   },
-  components: { HeaderBarBrand, HeaderBarMenu },
-  methods: {
-    displayMenu() {
-      return this.showMenu = !this.showMenu;
-    }
-  }
+  components: { HeaderBarBrand, HeaderBarMenu, HeaderBarLinks },
 };
 </script>
