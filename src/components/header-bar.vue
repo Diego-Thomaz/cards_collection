@@ -1,11 +1,11 @@
 <template>
   <header>
     <nav
-      class="navbar is-light"
+      class="navbar is-dark"
       role="navigation"
       aria-label="main navigation"
     >
-      <HeaderBarBrand :menu="showMenu" @burgerClick="showMenu = !showMenu"></HeaderBarBrand>
+      <HeaderBarBrand :is-open="showMenu" @burgerClick="showMenu = !showMenu"></HeaderBarBrand>
       <div id="navbarCards" class="navbar-menu" :class="{ 'is-active': showMenu }">
         <HeaderBarMenu></HeaderBarMenu>
         <HeaderBarLinks></HeaderBarLinks>

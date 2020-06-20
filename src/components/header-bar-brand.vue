@@ -2,12 +2,12 @@
   <div class="navbar-brand">
     <div class="navbar-item">
       <router-link to="/home">
-        <img src="../assets/logo.png">
+        <img src="https://www.dailyesports.gg/wp-content/uploads/2018/10/untitled-37106.jpg">
       </router-link>
     </div>
     <a role="button"
        class="navbar-burger burger"
-       :class="{ 'is-active': menu }"
+       :class="{ 'is-active': isOpen }"
        aria-label="menu"
        aria-expanded="false"
        data-target="navbarCards"
@@ -23,7 +23,7 @@
 <script>
 export default {
   props: {
-    menu: {
+    isOpen: {
       type: Boolean,
       default: () => false
     },

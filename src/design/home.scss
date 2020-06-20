@@ -1,0 +1,25 @@
+@import 'colors';
+
+.home_table {
+  background-color: $wheat;
+  border-collapse:separate;
+  border:solid $tan 1px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+  font-size: 14px;
+
+  td, th {
+    border-top:solid $tan 1px;
+  }
+
+  th {
+    border-top: none;
+  }
+
+  td:first-child, th:first-child {
+    border-left: none;
+  }
+  tbody tr:nth-child(even) {
+    background-color: $burlywood;
+  }
+}

@@ -2,24 +2,36 @@
   <section class="section">
     <div class="container">
       <h1 class="title is-1">
-        Magic The Gathering Area, Cards Collection
+        Magic: The Gathering Arena, Cards Collection
       </h1>
       <div class="columns is-12 is-multiline">
         <div class="column is-3" v-for="card in cards" :key="card.id">
           <article class="navigation">
             <figure class="image is-2by2">
               <img :src="card.image">
-              <div class="ml-3">
-                <div class="is-3">
-                  <span><strong>Name:</strong> {{ card.name }}</span>
-                </div>
-                <div class="is-3">
-                  <span><strong>Rarity:</strong> {{ card.rarity }}</span>
-                </div>
-                <div class="is-3">
-                  <span><strong>Race:</strong> {{ card.race }}</span>
-                </div>
-              </div>
+              <table class="table is-fullwidth home_table">
+                <tbody>
+                  <tr>
+                    <td><strong>Name:</strong></td><td>{{ card.name }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rarity:</strong></td><td>{{ card.rarity }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Race:</strong></td><td>{{ card.race }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <button
+                        class="button is-small is-dark is-fullwidth is-outlined"
+                        @click="addCardToCollection(card.id)"
+                      >
+                        Add
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </figure>
           </article>
         </div>
@@ -34,6 +46,7 @@ export default {
   data() {
     return {
       // Data is mocked for test porpouses
+      my_cards: [],
       cards: [
         {
           id: 1,
@@ -72,10 +85,10 @@ export default {
         },
         {
           id: 6,
-          name: 'Ayula, Queen Among Bears',
-          rarity: 'Legendary Creature',
-          race: 'Bear',
-          image: 'https://i.pinimg.com/564x/c8/dc/cc/c8dccc56c988bc5d20883ef77d68dfd2.jpg',
+          name: 'Nylea, God of the Hunt',
+          rarity: 'Legendary Enchantment Creature',
+          race: 'God',
+          image: 'https://i.pinimg.com/564x/b2/df/3f/b2df3f9bc3b803a6db35e97f7780884a.jpg',
         },
         {
           id: 7,
@@ -86,13 +99,29 @@ export default {
         },
         {
           id: 8,
-          name: 'Knight of Glory',
+          name: 'Snapcaster Mage',
           rarity: 'Creature',
-          race: 'Human Knight',
-          image: 'https://i.pinimg.com/564x/11/05/43/1105432ea57e74efb3579fddd7b9ceef.jpg',
+          race: 'Human Wizard',
+          image: 'https://i.pinimg.com/564x/d7/a9/fa/d7a9fa1f2d1976844e8601f08a88eb14.jpg',
         },
       ],
     };
   },
+  methods: {
+    addCardToCollection(card_id) {
+      this.addCard(card_id);
+      this.removeCardFromDeck(card_id);
+    },
+    addCard(card_id) {
+      return this.my_cards.push(this.cards.filter((obj) => obj.id === card_id)[0]);
+    },
+    removeCardFromDeck(card_id) {
+      return this.cards = this.cards.filter((obj) => obj.id !== card_id);
+    },
+  },
 }
 </script>
+
+<style lang="scss">
+@import '@/design/home.scss';
+</style>
