@@ -1,6 +1,6 @@
 # cards_collection
 
-Simple vue application with basic features from Vue.
+Simple vue application with basic features.
 
 ## Project setup
 ```
