@@ -1,6 +1,8 @@
 # cards_collection
 
-Simple vue application with basic features.
+Simple vue application with basic features from Vue and Apollo graphql.
+For this project runs fine, you need to exec the backend api that I created separated.
+Simple clone the api rails_graphql_api and follow the instructions to have graphql api to serve this one with data.
 
 ## Project setup
 ```
