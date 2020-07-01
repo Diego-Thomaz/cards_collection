@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import HeaderBarBrand from '@/components/header-bar-brand';
-import HeaderBarMenu from '@/components/header-bar-menu';
-import HeaderBarLinks from '@/components/header-bar-links';
+import HeaderBarBrand from '@/components/ui/header_bar/header-bar-brand';
+import HeaderBarMenu from '@/components/ui/header_bar/header-bar-menu';
+import HeaderBarLinks from '@/components/ui/header_bar/header-bar-links';
 
 export default {
   name: 'HeaderBar',

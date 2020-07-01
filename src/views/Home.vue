@@ -15,48 +15,15 @@
         <h1 class="title is-1">
           Magic: The Gathering Arena, Cards Collection
         </h1>
-        <div class="columns is-12 is-multiline">
-          <div class="column is-3" v-for="card in cards" :key="card.id">
-            <article class="navigation">
-              <figure class="image is-2by2">
-                <img :src="card.imgUrl" :alt="card.name">
-                <table class="table is-fullwidth home__table">
-                  <tbody>
-                    <tr>
-                      <td><strong>Name:</strong></td><td>{{ card.name }}</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Rarity:</strong></td><td>{{ card.rarity }}</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Type:</strong></td><td>{{ card.kinds }}</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Price:</strong></td><td>R$ {{ card.price }}</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <button
-                          class="button is-small is-dark is-fullwidth is-outlined"
-                          @click="addCardToCollection(card.id)"
-                        >
-                          Add to cart
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </figure>
-            </article>
-          </div>
-        </div>
+        <Card :cards="cards" @addCardToCollection="addCardToCollection" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
+import Card from '@/components/card/card'
+import gql from 'graphql-tag';
 
 const GET_CARDS = gql`
   query {
@@ -81,6 +48,7 @@ export default {
       cards: [],
     };
   },
+  components: { Card },
   apollo: {
     cards: {
       query: GET_CARDS
@@ -107,5 +75,41 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/design/home.scss';
+@import '../design/colors';
+
+.home__cart {
+  float: right;
+  margin-right: 20px;
+}
+
+a.notif {
+  position: relative;
+  display: block;
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  text-decoration: none;
+}
+
+a.notif:before {
+  content: "\f07a";
+  font-family: "Font Awesome 5 Free";
+  left: 5px;
+  position: absolute;
+  top: 0;
+  font-weight: 900;
+}
+
+.button__badge {
+  background-color: $crimson;
+  border-radius: 2px;
+  color: white;
+
+  padding: 1px 3px;
+  font-size: 10px;
+
+  position: absolute;
+  top: -8px;
+  right: 12px;
+}
 </style>
