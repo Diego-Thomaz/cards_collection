@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Card from '@/components/card/card'
+import Card from '@/components/card/'
 import gql from 'graphql-tag';
 
 const GET_CARDS = gql`

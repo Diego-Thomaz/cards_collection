@@ -14,10 +14,7 @@
 <script>
 export default {
   props: {
-    card_id: {
-      type: Number,
-      default: () => undefined
-    }
+    card_id: {}
   },
   methods: {
     addCardToCollection(card_id) {

@@ -1,17 +1,16 @@
 <template>
-  <tr>
-    <td><strong>{{ title }}</strong></td><td>{{ value }}</td>
-  </tr>
+  <div>
+    <strong>Total: R$ </strong> {{ sumTotal }}
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    title: {
+    sumTotal: {
       type: String,
       default: () => ""
-    },
-    value: {}
+    }
   }
 }
 </script>
