@@ -4,6 +4,7 @@ import router from './router';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import VueCurrencyInput from 'vue-currency-input'
 import VueApollo from 'vue-apollo';
 
 Vue.config.productionTip = false;
@@ -19,6 +20,7 @@ const apolloClient = new ApolloClient({
 });
 
 Vue.use(VueApollo);
+Vue.use(VueCurrencyInput);
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient

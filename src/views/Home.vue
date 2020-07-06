@@ -23,22 +23,7 @@
 
 <script>
 import Card from '@/components/card/'
-import gql from 'graphql-tag';
-
-const GET_CARDS = gql`
-  query {
-    cards {
-      id
-      name
-      rarity
-      price
-      imgUrl
-      kinds {
-        name
-      }
-    }
-  }
-`;
+import CardQueries from '@/assets/js/apollo-queries'
 
 export default {
   name: 'Home',
@@ -51,7 +36,7 @@ export default {
   components: { Card },
   apollo: {
     cards: {
-      query: GET_CARDS
+      query: CardQueries.GET_CARDS
     }
   },
   computed: {
@@ -74,7 +59,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../design/colors';
 
 .home__cart {

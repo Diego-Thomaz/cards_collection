@@ -1,6 +1,6 @@
 <template>
   <article class="media">
-    <CheckoutMediaImg :card-img-url="card.imgUrl" />
+    <Figure :img-url="card.imgUrl" fclass="media-left"/>
     <div class="media-content">
       <CheckoutMediaContent :card-name="card.name" :card-types="card.kinds" />
       <CheckoutMediaNav :card="card" @recalcPrice="recalcPrice" />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CheckoutMediaImg from '@/components/checkout/checkout-media-img'
+import Figure from '@/components/ui/elements/figure'
 import CheckoutMediaContent from '@/components/checkout/checkout-media-content'
 import CheckoutMediaNav from '@/components/checkout/checkout-media-nav'
 import CheckoutMediaButton from '@/components/checkout/checkout-media-button'
@@ -22,7 +22,7 @@ export default {
       default: () => {}
     }
   },
-  components: { CheckoutMediaImg, CheckoutMediaContent, CheckoutMediaNav, CheckoutMediaButton },
+  components: { CheckoutMediaContent, CheckoutMediaNav, CheckoutMediaButton, Figure },
   methods: {
     recalcPrice(card){
       this.$emit('recalcPrice', card);

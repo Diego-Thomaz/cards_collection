@@ -4,7 +4,7 @@
       <router-link to="/home">HOME</router-link>
     </div>
     <div class="navbar-item">
-      My Cards
+      <router-link to="/cards/registration">ADD CARDS</router-link>
     </div>
   </div>
 </template>
