@@ -39,6 +39,19 @@
           </div>
           <div class="field">
             <div class="control">
+              <label for="manaCost" class="label">Mana Cost</label>
+              <input
+                class="input is-rounded"
+                type="number"
+                placeholder="Mana Cost"
+                name="manaCost"
+                v-model="card.manaCost"
+                min="0"
+              >
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
               <label for="price" class="label">Price</label>
               <currency-input
                 class="input is-rounded"
@@ -83,6 +96,7 @@
 <script>
 import Figure from '@/components/ui/elements/figure'
 import CardQueries from '@/assets/js/apollo-queries'
+import gql from 'graphql-tag';
 
 export default {
   data() {
@@ -91,6 +105,7 @@ export default {
         name: "",
         rarity: "",
         imgUrl: "",
+        manaCost: 0,
         price: 0.00,
         kinds: []
       },
@@ -119,7 +134,49 @@ export default {
   },
   methods: {
     saveCard(card) {
-      console.log('saved', card);
+      console.log(card)
+      this.$apollo.mutate({
+        mutation: gql`mutation($name: String!, $price: Float!, $imgUrl: String!, $rarity: String!, $manaCost: Int!, $kinds: [KindInput!]) {
+          createCard(input: {
+            attributes: {
+              name: $name,
+              price: $price,
+              imgUrl: $imgUrl,
+              rarity: $rarity,
+              manaCost: $manaCost,
+              kinds: $kinds
+            }
+          }) {
+            card {
+              id
+              name
+              price
+              imgUrl
+              rarity
+              manaCost
+              kinds {
+                name
+              }
+            }
+          }
+        }`,
+        variables: {
+          name: card.name,
+          price: card.price,
+          imgUrl: card.imgUrl,
+          rarity: card.rarity.toLowerCase(),
+          manaCost: parseInt(card.manaCost),
+          kinds: card.kinds.map(function(x) {
+            return {
+              id: x
+            }
+          })
+        }
+      }).then((data) => {
+        console.log(data)
+      }).catch((error) => {
+        console.error(error)
+      })
     }
   }
 }
