@@ -134,7 +134,6 @@ export default {
   },
   methods: {
     saveCard(card) {
-      console.log(card)
       this.$apollo.mutate({
         mutation: gql`mutation($name: String!, $price: Float!, $imgUrl: String!, $rarity: String!, $manaCost: Int!, $kinds: [KindInput!]) {
           createCard(input: {
@@ -158,6 +157,7 @@ export default {
                 name
               }
             }
+            errors
           }
         }`,
         variables: {
@@ -173,9 +173,14 @@ export default {
           })
         }
       }).then((data) => {
-        console.log(data)
-      }).catch((error) => {
-        console.error(error)
+        if(data.data.createCard.errors.length){
+          console.error(data.data.createCard.errors)
+        }
+        else {
+          this.$router.push({ path: '/home' })
+        }
+      }).catch((errors) => {
+        console.error(errors)
       })
     }
   }
