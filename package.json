@@ -16,7 +16,7 @@
     "core-js": "^3.6.5",
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.3",
     "vue-currency-input": "^1.20.0",
